@@ -1,0 +1,15 @@
+	public function {{fieldNameSigularVar}}(Request $request){
+		try{
+			${{modelNameSingularVar}} = {{name}}::find($request->id);
+			${{modelNameSingularVar}}->{{fieldNameSigularVar}} = $request->{{fieldNameSigularVar}};
+			${{modelNameSingularVar}}->save();
+
+			return $this->response([
+                'status' => $this->getStatusCode(),
+                'message' => '{{name}} {{fieldNameSigularVar}}',
+                'data' =>  ${{modelNameSingularVar}},
+            ]);
+		}catch(\Exception $e){
+            return $this->errorResponse($e->getMessage());
+        }
+	}
