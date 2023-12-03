@@ -31,15 +31,11 @@ class Helper{
     }
 
     public static function backslash(){
-        if (config('gt-crud-api.backslash') != '') {
-            return explode('"', config('gt-crud-api.backslash'))[0];            
-        }else{
-            return '';
-        }
+        return explode('"', '\"')[0];
     }
 
     public static function forslash(){
-        return config('gt-crud-api.forslash');
+        return '/';
     }
 
     public static function getTableName($name){

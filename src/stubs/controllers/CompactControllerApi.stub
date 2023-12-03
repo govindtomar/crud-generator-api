@@ -3,6 +3,7 @@ namespace App\Http\Controllers{{backslash}}{{namespace}};
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Exceptions\ApiException;
 use App\Http\Requests\{{namespace}}\{{modelName}}Request;
 use App\Models\{{modelName}};
 {{relativeModel}}
@@ -20,7 +21,7 @@ class {{modelName}}Controller extends ApiController
                 'message' => '{{modelName}} lists',
                 'data' =>  ${{modelNamePluralVar}},
             ]);
-        }catch(\Exception $e){
+        }catch(ApiException $e){
             return $this->errorResponse($e->getMessage());
         }
     }
@@ -36,7 +37,7 @@ class {{modelName}}Controller extends ApiController
                 'message' => 'Save {{modelName}}',
                 'data' =>  ${{modelNameSingularVar}},
             ]);
-        }catch(\Exception $e){
+        }catch(ApiException $e){
             return $this->errorResponse($e->getMessage());
         }
     }
@@ -50,7 +51,7 @@ class {{modelName}}Controller extends ApiController
                 'message' => 'Show {{modelName}}',
                 'data' =>  ${{modelNameSingularVar}},
             ]);
-        }catch(\Exception $e){
+        }catch(ApiException $e){
             return $this->errorResponse($e->getMessage());
         }
     }
@@ -68,7 +69,7 @@ class {{modelName}}Controller extends ApiController
                 'message' => 'Update {{modelName}}',
                 'data' =>  ${{modelNameSingularVar}},
             ]);
-        }catch(\Exception $e){
+        }catch(ApiException $e){
             return $this->errorResponse($e->getMessage());
         }
     }
@@ -84,7 +85,7 @@ class {{modelName}}Controller extends ApiController
                 'message' => 'Delete {{modelName}}',
                 'data' =>  ${{modelNameSingularVar}},
             ]);
-        }catch(\Exception $e){
+        }catch(ApiException $e){
             return $this->errorResponse($e->getMessage());
         }
     }

@@ -36,11 +36,11 @@ class MigrationHelper{
 
         foreach ($fields as $field) {
             $var = explode('*', $field);
-            if ($var[0] != 'select' || $var[0] != 'toggle') {
+            if ($var[0] == 'text') {
                 $field_name .= "_____table->string('$var[1]');\n\t\t\t";
             }
             else if($var[0] == 'toggle'){
-                $field_name .= "_____table->tinyInteger('$var[1]');\n\t\t\t";
+                $field_name .= "_____table->boolean('$var[1]')->default(1);\n\t\t\t";
             }
         }
 

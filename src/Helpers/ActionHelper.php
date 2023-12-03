@@ -19,7 +19,7 @@ class ActionHelper{
 
     public static function routes($name, $fields)
     {
-        $route_page = base_path('routes/web.php');
+        $route_page = base_path('routes/api.php');
 
         $route_exists = ActionHelper::string_match($route_page, "$name Controller Routes");
 
@@ -28,8 +28,6 @@ class ActionHelper{
 
             File::append($route_page, 
                 "use App\Http\Controllers".Helper::backslash().Helper::namespace().Helper::backslash().$name."Controller;\n");
-            File::append($route_page, 
-                "Route::group(['prefix' => '".Helper::path()."', 'as' => '".Helper::path().".'], function(){\n");
 
             File::append($route_page, 
                 "\tRoute::resource('".Helper::getAddress($name)."', ".$name."Controller::class);\n");
@@ -40,7 +38,6 @@ class ActionHelper{
                     File::append($route_page, "\tRoute::post('".Helper::getAddress($name)."/".$var[1]."', [".$name."Controller::class, '".$var[1]."'])->name('".Helper::getAddress($name).".".$var[1]."');\n");
                 }
             }
-            File::append($route_page, "});");
         }
         
     }
@@ -64,7 +61,7 @@ class ActionHelper{
             File::append($route_page, 
                 "\tRoute::get('/', [".$name."Controller::class, 'index'])->name('index');\n");
             File::append($route_page, 
-                "\tRoute::post('/', [".$name."Controller::class, 'store'])->name('store');\n");
+                "\tRoute::post('/', [".$name."Controller::class, 'store'])->name('create');\n");
             File::append($route_page, 
                 "\tRoute::put('/', [".$name."Controller::class, 'update'])->name('update');\n");
             File::append($route_page, 

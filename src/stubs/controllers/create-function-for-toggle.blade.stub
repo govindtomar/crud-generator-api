@@ -9,7 +9,7 @@
                 'message' => '{{name}} {{fieldNameSigularVar}}',
                 'data' =>  ${{modelNameSingularVar}},
             ]);
-		}catch(\Exception $e){
+		}catch(ApiException $e){
             return $this->errorResponse($e->getMessage());
         }
 	}

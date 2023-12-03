@@ -17,9 +17,19 @@ class {{modelName}}Request extends FormRequest
 
     public function rules()
     {
-        return [
+
+        $rules = [
             {{controllerValidation}}
         ];
+
+        if (in_array($this->method(), ['PUT', 'PATCH'])) {
+            $rules = [
+                'id'     => 'required',
+                {{controllerValidation}}
+            ];
+        }
+
+        return $rules;
     }
 
     public function failedValidation(Validator $validator){

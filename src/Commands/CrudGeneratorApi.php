@@ -102,7 +102,7 @@ class CrudGeneratorApi extends Command
 
         ControllerApiHelper::controller($name, $fields, $tables);
     
-        ActionHelper::api_routes($name, $fields);
+        ActionHelper::routes($name, $fields);
         
         if ($migration == 'y' || $migration == 'yes') {
             ActionHelper::migration($name, $fields, $tables);
